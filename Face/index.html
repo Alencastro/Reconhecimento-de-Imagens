@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reconhecimento Facial</title>
+
+    <script src="/trackes/tracking-min.js"></script>
+    <script src="/trackes/data/face.js"></script>
+
+    <style>
+        video, canvas{
+            position: absolute;
+            border: 1px solid blue;
+        }
+    </style>
+
+</head>
+<body>
+
+    <video id="video" width="320" height="240" autoplay preload loop muted ></video>
+
+    <canvas id="canvas" width="320" height="240"></canvas>
+    <script>
+        let init = () =>{
+            const video = document.getElementById('video')
+            const canvas = document.getElementById('canvas')
+            const context = canvas.getContext('2d')
+            const tracker = new tracking.ObjectTracker('face')
+            tracking.track('#video', tracker, {camera: true})
+            tracker.on('track', event=>{
+                console.log(event)
+            })
+            console.log(trac)
+        }
+        init()
+    </script>
+
+</body>
+</html>
